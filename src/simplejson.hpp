@@ -82,7 +82,6 @@ std::ostream& operator<<(std::ostream& os, const JSONObject& json) {
         else {
             os << t;
         }
-        // os << t;
     }, json.inner);
     return os;
 }
@@ -216,6 +215,7 @@ std::pair<JSONObject, size_t> parse(std::string_view json) {
     }
     return {JSONObject{std::nullptr_t{}}, 0};
 }
+
 }
 
 #endif
