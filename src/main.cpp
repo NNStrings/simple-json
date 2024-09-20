@@ -16,7 +16,10 @@ int main()
         }
     }
     )";
+
     auto [json, eaten] = simpjson::parse(str);
+    std::string ans = simpjson::stringify(json);
+
     std::cout << json << std::endl;
     const auto& dict = json.get<simpjson::JSONDict>().at("hello");
     auto dovisit = [&] (auto& dovisit, const simpjson::JSONObject& content) -> void {

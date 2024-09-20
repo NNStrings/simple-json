@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <vector>
 #include <unordered_map>
 #include <variant>
@@ -214,6 +215,17 @@ std::pair<JSONObject, size_t> parse(std::string_view json) {
         return {JSONObject{std::move(res)}, i};
     }
     return {JSONObject{std::nullptr_t{}}, 0};
+}
+
+[[nodiscard]] std::string stringify(const JSONObject& json) {
+    std::string json_string;
+    std::stringstream ss;
+    ss << json;
+    std::string tmp;
+    while (ss >> tmp) {
+        json_string += tmp + " ";
+    }
+    return json_string;
 }
 
 }
